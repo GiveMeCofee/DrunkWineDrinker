@@ -8,6 +8,7 @@ import org.powerbot.script.PollingScript;
 import org.powerbot.script.Script.Manifest;
 import org.powerbot.script.rt6.ClientContext;
 
+import com.powerbot.task.DepositAndTakeJugs;
 import com.powerbot.task.DrinkWineTask;
 import com.powerbot.task.Task;
 
@@ -22,7 +23,9 @@ public class WineDrinker extends PollingScript<ClientContext> {
 	public void start(){
 		log.info("Initializng bot");
 		
-		taskList.addAll(Arrays.asList(new DrinkWineTask(ctx)));
+		taskList.addAll(Arrays.asList(
+//				new DrinkWineTask(ctx),
+				new DepositAndTakeJugs(ctx)));
 	}
 	
 	@Override
