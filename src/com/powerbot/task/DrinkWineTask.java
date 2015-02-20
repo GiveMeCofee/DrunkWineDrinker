@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import org.powerbot.script.Condition;
 import org.powerbot.script.Filter;
 import org.powerbot.script.rt6.ClientContext;
+import org.powerbot.script.rt6.Constants;
 import org.powerbot.script.rt6.Item;
 
 import com.powerbot.winedrinker.Jugs;
@@ -24,9 +25,9 @@ public class DrinkWineTask extends Task<ClientContext> {
 
 		log.info("Checking if where is any wine to drink");
 		// Check if back back contains Jugs of Wine
-		// TODO: Change water to wine
-		System.out.println(ctx.backpack.select());
-		if (!ctx.backpack.select(JugsFilter).isEmpty()) {
+		ctx.backpack.select(); // Random line ??? Without this it dosent work! 
+		//TODO: Change count to 28
+		if (ctx.backpack.select(JugsFilter).count() == 10) {
 			log.info("Wine found in back pack");
 			return true;
 		}
@@ -36,12 +37,17 @@ public class DrinkWineTask extends Task<ClientContext> {
 	@Override
 	public void execute() {
 
+		// TODO: Change water to wine
 		log.info("Tryng to drink all wine in the back pack");
 
 		for (Item selectedItem : ctx.backpack.select(JugsFilter)) {
-
+			
+			
+			
 			selectedItem.interact("Empty");
-
+			
+			log.info("Wine left " + ctx.backpack.select(JugsFilter).count() );
+			
 			// Convert to lambda??
 
 			Condition.wait(new Callable<Boolean>() {
