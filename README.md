@@ -1,2 +1,2 @@
 # DrunkWineDrinker
-Power bot Script which drinks wines at GE. Has option for filling it with water.
+Rune Scape Power Bot script which drinks wine at G.E. and fills it with water. 
